@@ -1,0 +1,55 @@
+{
+    "variables": {
+        "homefolder": "{{env `HOME`}}",
+        "aws_shared_credentials_file": "{{user `homefolder`}}/.aws/credentials",
+        "aws_region": "us-east-1",
+        "aws_instance_type": "t2.micro",
+        "aws_ami_name": "ami_packer",
+        "aws_ami_name_pattern": "amzn2-ami-hvm-2.0*x86_64-gp2",
+        "aws_ami_owner": "137112412989",
+        "aws_ami_ssh_username": "ec2-user",
+        "aws_os_version": "Amazon Linux",
+        "aws_os_release": "Latest"
+    },
+    "sensitive-variables": ["aws_ami_owner", "aws_ami_name_pattern"],
+    "builders": [
+        {
+            "type": "amazon-ebs",
+            "region": "{{user `aws_region`}}",
+            "shared_credentials_file": "{{user `aws_shared_credentials_file`}}",
+            "source_ami_filter": {
+                "filters": {
+                    "virtualization-type": "hvm",
+                    "name": "{{user `aws_ami_name_pattern`}}",
+                    "root-device-type": "ebs",
+                    "architecture": "x86_64"
+                },
+                "owners": ["{{user `aws_ami_owner`}}"],
+                "most_recent": true
+            },
+            "instance_type": "{{user `aws_instance_type`}}",
+            "ssh_username": "{{user `aws_ami_ssh_username`}}",
+            "ami_name": "{{user `aws_ami_name`}}-{{ timestamp }}",
+            "ami_description": "from .{{ .SourceAMI }}",
+            "tags": {
+                "OS_Version": "{{user `aws_os_version`}}",
+                "Release": "{{user `aws_os_release`}}",
+                "Base_AMI_Name": "{{ .SourceAMIName }}"
+            }
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "ansible",
+            "playbook_file": "./playbook.yml",
+            "user": "ec2-user",
+            "extra_arguments": [ "--extra-vars", "ansible_python_interpreter=/usr/bin/python2" ],
+            "ansible_env_vars": [ "ANSIBLE_HOST_KEY_CHECKING=False" ]
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "manifest"
+        }
+    ]
+}

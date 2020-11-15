@@ -1,0 +1,16 @@
+---
+    - name: Instalando ferramentas essenciais
+      hosts: 'all'
+      become: yes
+      become_method: sudo
+      tasks:    
+      - name: Instalando pacotes
+        yum:
+          state: present
+          update_cache: yes
+          name: "{{ item }}"
+        with_items:
+          - net-tools
+          - telnet
+          - vim
+          - htop
