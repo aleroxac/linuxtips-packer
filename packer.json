@@ -1,7 +1,6 @@
 {
     "variables": {
         "homefolder": "{{env `HOME`}}",
-        "aws_shared_credentials_file": "{{user `homefolder`}}/.aws/credentials",
         "aws_region": "us-east-1",
         "aws_instance_type": "t2.micro",
         "aws_ami_name": "ami_packer",
@@ -16,7 +15,6 @@
         {
             "type": "amazon-ebs",
             "region": "{{user `aws_region`}}",
-            "shared_credentials_file": "{{user `aws_shared_credentials_file`}}",
             "source_ami_filter": {
                 "filters": {
                     "virtualization-type": "hvm",
