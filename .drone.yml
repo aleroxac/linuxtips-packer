@@ -26,7 +26,7 @@ steps:
     AWS_DEFAULT_REGION:
       from_secret: AWS_DEFAULT_REGION
   commands:
-    - apk --no-cache add ansible
+    - apk --no-cache add ansible python3
     - packer build packer.json
 
 volumes:
