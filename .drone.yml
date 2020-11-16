@@ -5,7 +5,7 @@ name: default
 
 steps:
 - name: validate
-  image: hashcorp/packer:1.5.6
+  image: hashicorp/packer:1.5.6
   environment:
     AWS_ACCESS_KEY:
       from_secret: AWS_ACCESS_KEY
@@ -17,7 +17,7 @@ steps:
     - packer validate -syntax-only packer.json
 
 - name: build
-  image: hashcorp/packer:1.5.6
+  image: hashicorp/packer:1.5.6
   environment:
     AWS_ACCESS_KEY:
       from_secret: AWS_ACCESS_KEY
