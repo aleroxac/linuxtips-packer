@@ -4,7 +4,7 @@
         "aws_region": "us-east-1",
         "aws_instance_type": "t2.micro",
         "aws_ami_name": "ami_packer",
-        "aws_ami_name_pattern": "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64",
+        "aws_ami_name_pattern": "ubuntu/images/*ubuntu-focal-20.04-amd64*",
         "aws_ami_owner": "099720109477",
         "aws_ami_ssh_username": "ubuntu",
         "aws_os_version": "Amazon Linux",
