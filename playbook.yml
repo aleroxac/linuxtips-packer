@@ -2,6 +2,7 @@
     - name: Instalando ferramentas essenciais
       hosts: 'all'
       become: yes
+      gather_facts: False
       become_method: sudo
       tasks:    
       - name: Instalando pacotes

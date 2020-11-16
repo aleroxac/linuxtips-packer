@@ -1,6 +1,8 @@
 # linuxtips-packer
 ![packer-logo](assets/packer.png)
 
+[![Build Status](https://cloud.drone.io/api/badges/aleroxac/linuxtips-packer/status.svg)](https://cloud.drone.io/aleroxac/linuxtips-packer)
+
 Projeto de pipeline no DroneCI utilizando conteúdo assimilado sobre packer no treinamento Descomplicando Packer da LINUXtips.
 
 ## Requisitos para utilização da pipeline
