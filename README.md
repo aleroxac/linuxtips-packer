@@ -28,9 +28,9 @@ sudo apt install -y python2-pip ansible
 sudo pip install awscli
 
 # Baixando e instalando o ansible e packer
-wget -o /tmp "https://releases.hashicorp.com/packer/1.6.5/packer_1.6.5_linux_amd64.zip"
-unzip /tmp/packer_1.6.5_linux_amd64.zip
-sudo mv packer /usr/local/bin/
+wget -P /tmp "https://releases.hashicorp.com/packer/1.6.5/packer_1.6.5_linux_amd64.zip"
+unzip /tmp/packer*.zip
+sudo mv /tmp/packer /usr/local/bin/
 
 # Não é obrigatório instalar o ansible e o packer localmente, mais vai facilitar teu dia a dia
 ```
