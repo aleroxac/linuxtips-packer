@@ -9,4 +9,4 @@
         apt:
           state: present
           update_cache: yes
-          name: [ "telnet", "libnet-ifconfig-wrapper-perl", "vim", "htop" ]
+          name: [ "telnet", "vim", "htop" ]
