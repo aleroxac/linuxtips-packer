@@ -4,7 +4,7 @@
       become: yes
       gather_facts: False
       become_method: sudo
-      tasks:    
+      tasks:
       - name: Instalando pacotes
         apt:
           state: present
